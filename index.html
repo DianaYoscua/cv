@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,34 +7,39 @@
     <title>CV - Diana Yoscua Silva</title>
     <style>
         /* --- FUENTE DE GOOGLE --- */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        /* --- VARIABLES DE COLOR (TEMA OSCURO POR DEFECTO) --- */
+        /* --- VARIABLES DE COLOR (TEMA CLARO - MENTA FRESCO) --- */
         :root {
-            --bg-color: #2c3e50; /* Azul marino oscuro */
-            --sidebar-color: #34495e; /* Azul grisáceo */
-            --main-color: #273746;
-            --accent-color: #3498db; /* Azul brillante */
-            --text-color: #ecf0f1; /* Blanco hueso */
-            --card-bg-color: #3b5061;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --subtext-color: #bdc3c7; /* Gris claro */
+            --bg-color: #f8f9fa;
+            --sidebar-color: #ffffff;
+            --main-color: #f8f9fa;
+            --accent-color: #4db6ac; /* Menta/Turquesa principal */
+            --accent-dark-color: #00897b; /* Menta/Turquesa oscuro */
+            --text-color: #343a40;
+            --card-bg-color: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.07);
+            --subtext-color: #6c757d; 
+            --title-color: #212529;
         }
 
-        /* --- VARIABLES PARA EL TEMA CLARO --- */
-        body.light-mode {
-            --bg-color: #f4f7f9;
-            --sidebar-color: #ffffff;
-            --main-color: #eef2f5;
-            --accent-color: #2980b9; /* Azul más oscuro */
-            --text-color: #333333;
-            --card-bg-color: #ffffff;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --subtext-color: #7f8c8d; /* Gris medio */
+        /* --- VARIABLES PARA EL TEMA OSCURO --- */
+        body.dark-mode {
+            --bg-color: #1a1c1d;
+            --sidebar-color: #212529;
+            --main-color: #1a1c1d;
+            --accent-color: #80cbc4; /* Menta más brillante para modo oscuro */
+            --accent-dark-color: #4db6ac;
+            --text-color: #e9ecef;
+            --card-bg-color: #2c2f31;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --subtext-color: #adb5bd;
+            --title-color: #ffffff;
         }
 
         /* --- ESTILOS GENERALES Y RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
@@ -49,13 +55,13 @@
             display: flex;
             width: 100%;
             max-width: 1200px;
-            background-color: var(--sidebar-color);
+            background-color: var(--main-color);
             border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
+            box-shadow: 0 10px 40px var(--shadow-color);
             overflow: hidden;
             animation: fadeIn 0.8s ease-in-out;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- BARRA LATERAL (SIDEBAR) --- */
         .sidebar {
@@ -67,87 +73,124 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            transition: background-color 0.3s;
         }
         .profile-img {
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            border: 5px solid var(--accent-color);
             object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
         }
-        .sidebar h1 { font-size: 2rem; margin-bottom: 5px; }
+        .sidebar h1 { 
+            font-size: 2.1rem;
+            margin-bottom: 8px; 
+            font-weight: 700;
+            color: var(--title-color);
+        }
         .sidebar h2 {
             font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--text-color);
+            font-weight: 400;
+            color: var(--subtext-color);
             margin-bottom: 30px;
         }
         .sidebar-section { width: 100%; margin-bottom: 30px; text-align: left; }
         .sidebar-section h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 15px;
             color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 5px;
+            font-weight: 600;
         }
-        .contact-info p, .skills-list li { display: flex; align-items: center; margin-bottom: 12px; font-weight: 300; }
-        .contact-info i, .skills-list i { color: var(--accent-color); margin-right: 15px; width: 20px; text-align: center; }
+        .contact-info p, .skills-list li { display: flex; align-items: center; margin-bottom: 12px; font-weight: 400; font-size: 0.95rem; }
+        .contact-info i, .skills-list i { color: var(--accent-color); margin-right: 15px; width: 20px; text-align: center; font-size: 1.1rem; }
         .contact-info a { color: var(--text-color); text-decoration: none; transition: color 0.3s; }
-        .contact-info a:hover { color: var(--accent-color); }
+        .contact-info a:hover { color: var(--accent-dark-color); }
         .skills-list { list-style: none; }
         
         /* --- CONTENIDO PRINCIPAL --- */
         .main-content {
             width: 62%;
             padding: 40px;
-            background-color: var(--main-color);
             overflow-y: auto;
         }
         .main-section { margin-bottom: 40px; }
         .main-section h2 {
-            font-size: 2.2rem;
-            color: var(--accent-color);
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 25px;
-            border-bottom: 3px solid var(--accent-color);
             padding-bottom: 10px;
+            position: relative;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .main-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
         }
         .timeline-item {
             background-color: var(--card-bg-color);
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border-left: 5px solid var(--accent-color);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 4px 20px var(--shadow-color);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .timeline-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px var(--shadow-color); }
-        .timeline-item h3 { font-size: 1.4rem; margin-bottom: 5px; }
-        .item-subtitle { color: var(--subtext-color); margin-bottom: 15px; font-weight: 400; font-size: 0.95rem; }
-        .timeline-item ul { list-style-position: inside; padding-left: 5px; }
-        .timeline-item li { margin-bottom: 8px; line-height: 1.6; font-weight: 300; }
+        .timeline-item:hover { transform: translateY(-5px); box-shadow: 0 8px 30px var(--shadow-color); }
+        .timeline-item h3 { font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--title-color); }
+        .item-subtitle { color: var(--subtext-color); margin-bottom: 15px; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;}
+        .timeline-item ul { list-style: none; padding-left: 0; }
+        .timeline-item li { margin-bottom: 10px; line-height: 1.7; font-weight: 400; position: relative; padding-left: 25px;}
+        .timeline-item li::before {
+            content: '›';
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
         .homologacion-details {
             font-size: 0.85rem;
             color: var(--subtext-color);
             margin-top: 10px;
-            background-color: rgba(0,0,0,0.1);
-            padding: 8px;
+            padding: 8px 12px;
             border-radius: 5px;
+            background-color: var(--main-color);
+            border: 1px solid #e9ecef;
+        }
+        .dark-mode .homologacion-details {
+             border: 1px solid #3c4043;
         }
         
         /* --- INTERRUPTOR DE TEMA --- */
-        .theme-switch-wrapper{position:absolute;top:20px;right:20px;display:flex;align-items:center}.theme-switch{display:inline-block;height:24px;position:relative;width:50px}.theme-switch input{display:none}.slider{background-color:#ccc;bottom:0;cursor:pointer;left:0;position:absolute;right:0;top:0;transition:.4s;border-radius:34px}.slider:before{background-color:#fff;bottom:4px;content:"";height:16px;left:4px;position:absolute;transition:.4s;width:16px;border-radius:50%}input:checked+.slider{background-color:var(--accent-color)}input:checked+.slider:before{transform:translateX(26px)}
+        .theme-switch-wrapper{position:fixed;top:20px;right:20px;display:flex;align-items:center;z-index:100}.theme-switch{display:inline-block;height:24px;position:relative;width:50px}.theme-switch input{display:none}.slider{background-color:#ccc;bottom:0;cursor:pointer;left:0;position:absolute;right:0;top:0;transition:.4s;border-radius:34px}.slider:before{background-color:#fff;bottom:4px;content:"";height:16px;left:4px;position:absolute;transition:.4s;width:16px;border-radius:50%}input:checked+.slider{background-color:var(--accent-color)}input:checked+.slider:before{transform:translateX(26px)}
 
         /* --- DISEÑO ADAPTABLE --- */
         @media (max-width: 950px) {
             .container { flex-direction: column; }
             .sidebar, .main-content { width: 100%; max-width: none; }
+            .theme-switch-wrapper { position: absolute; }
         }
     </style>
     <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="light-mode">
+<body class="light-mode"> 
 
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="theme-toggle"> <input type="checkbox" id="theme-toggle"/> <span class="slider round"></span> </label>
@@ -156,14 +199,13 @@
     <div class="container">
         <!-- ========================== BARRA LATERAL ========================== -->
         <aside class="sidebar">
-            <!-- REEMPLAZA LA URL DE LA IMAGEN SI QUIERES USAR TU FOTO LOCAL -->
             <img src="https://lh3.googleusercontent.com/pw/AP1GczNMGN8Xyyk_8_JoGGV6JQszekcF1Un6yEAxN2AB27VMul5zS0dZFc6H9F4H-Nx5HJJYy-K3kcvI_hhf47lvhw3TZhLcVxEKIurtXZ04x4HQ3czwCb3b4JRCOd5_aSLBH0QySFYd_s1naF-hv32AT5VWVQ=w891-h928-s-no-gm?authuser=0" alt="Foto de Diana Yoscua Silva" class="profile-img">
             
             <h1>Diana Yoscua Silva</h1>
-            <h2>Operaria de almacén con experiencia en el sector de la logística.</h2>
+            <h2>Operaria de almacén con experiencia en logística</h2>
 
             <div class="sidebar-section contact-info">
-                <h3>CONTACTO</h3>
+                <h3>Contacto</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Guadalajara, 19001</p>
                 <p><i class="fas fa-phone"></i> <a href="tel:+34640751738">(+34) 640 751 738</a></p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:dianiyoscua@gmail.com">dianiyoscua@gmail.com</a></p>
@@ -171,30 +213,22 @@
             </div>
 
             <div class="sidebar-section">
-                <h3>APTITUDES</h3>
+                <h3>Aptitudes</h3>
                 <ul class="skills-list">
-                    <li><i class="fa-solid fa-brain"></i> Alta predisposición para el aprendizaje</li>
-                    <li><i class="fa-solid fa-bolt"></i> Buena condición para tareas dinámicas</li>
+                    <li><i class="fa-solid fa-brain"></i> Alta predisposición al aprendizaje</li>
+                    <li><i class="fa-solid fa-bolt"></i> Condición física para tareas dinámicas</li>
                     <li><i class="fa-solid fa-eye"></i> Atención al detalle y precisión</li>
-                    <li><i class="fa-solid fa-lightbulb"></i> Iniciativa para actuar sin supervisión</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> Iniciativa y autonomía</li>
                 </ul>
             </div>
             
             <div class="sidebar-section">
-                <h3>OTROS DATOS DE INTERÉS</h3>
+                <h3>Otros Datos</h3>
                  <ul class="skills-list">
                     <li><i class="fa-solid fa-clock"></i> Disponibilidad inmediata</li>
                     <li><i class="fa-solid fa-calendar-days"></i> Flexibilidad horaria</li>
-                    <li><i class="fa-solid fa-car"></i> Vehículo propio</li>
-                    <li><i class="fa-solid fa-id-card"></i> Carnet de conducir: B</li>
+                    <li><i class="fa-solid fa-car"></i> Vehículo propio y Carnet B</li>
                     <li><i class="fa-solid fa-flag"></i> Nacionalidad Española</li>
-                </ul>
-            </div>
-            
-            <div class="sidebar-section">
-                <h3>IDIOMAS</h3>
-                <ul class="skills-list">
-                    <li><i class="fas fa-language"></i> Inglés: Nivel B1</li>
                 </ul>
             </div>
         </aside>
@@ -203,22 +237,21 @@
         <main class="main-content">
             
             <section class="main-section">
-                <h2>EXPERIENCIA</h2>
+                <h2>Experiencia Profesional</h2>
                 <div class="timeline-item">
                     <h3>Operadora logística</h3>
                     <p class="item-subtitle">PULL&BEAR, Cabanillas del campo | MAYO 2025 - ACTUALMENTE</p>
                     <ul>
                         <li>Clasificación de mercancía y control de entradas y salidas.</li>
-                        <li>Manejo de paquetería para exportación y preparación de envíos.</li>
-                        <li>Uso de dispositivos PDA para registrar y verificar inventarios.</li>
-                        <li>Aseguramiento de la correcta ubicación de productos en el almacén.</li>
+                        <li>Manejo de paquetería y preparación de envíos para exportación.</li>
+                        <li>Verificación de inventarios y ubicación de productos con PDA.</li>
                     </ul>
                 </div>
                  <div class="timeline-item">
                     <h3>Operaria de mantenimiento</h3>
                     <p class="item-subtitle">Serunion, Marchamalo | ENERO 2019 - ABRIL 2025</p>
                     <ul>
-                        <li>Mantenimiento general de naves industriales.</li>
+                        <li>Mantenimiento general preventivo y correctivo de naves industriales.</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
@@ -226,8 +259,8 @@
                     <p class="item-subtitle">Dekra S.L, Alovera | ENERO 2017 - ENERO 2019</p>
                     <ul>
                         <li>Manipulación de productos de perfumería y cosmética.</li>
-                        <li>Encargada de paletizar, etiquetar, flejar y revisar pedidos.</li>
-                        <li>Control de calidad visual y preparación de embalajes.</li>
+                        <li>Paletizado, etiquetado, flejado y revisión de pedidos.</li>
+                        <li>Control de calidad visual y preparación final de embalajes.</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
@@ -235,36 +268,37 @@
                     <p class="item-subtitle">Grupo Constant, Alovera | ENERO 2016 - ENERO 2017</p>
                     <ul>
                         <li>Recepción, clasificación y ubicación de mercancía.</li>
-                        <li>Preparación y revisión de pedidos con radiofrecuencia.</li>
-                        <li>Paletizado y flejado de mercancía.</li>
+                        <li>Preparación y revisión de pedidos mediante radiofrecuencia.</li>
+                        <li>Paletizado y flejado de mercancía para su expedición.</li>
                     </ul>
                 </div>
             </section>
             
             <section class="main-section">
-                <h2>FORMACIÓN</h2>
+                <h2>Formación</h2>
                  <div class="timeline-item">
                     <h3>Bachillerato</h3>
-                    <p class="item-subtitle">Colegio Francisco de Paula Santander | MARZO 2000 - DICIEMBRE 2003</p>
+                    <p class="item-subtitle">Colegio Francisco de Paula Santander | 2000 - 2003</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Homologación de Formación Profesional</h3>
-                    <p class="item-subtitle">Ministerio de Educación, Formación Profesional | Fecha: 16/05/2011</p>
-                    <div class="homologacion-details">
-                       <strong>Nº de Serie:</strong> A Nº 0808474 /2011/P0985 / 201101205267/1
-                    </div>
+                    <h3>Homologación Profesional</h3>
+                    <p class="item-subtitle">Ministerio de Educación, Formación Profesional | 16/05/2011</p>
                 </div>
             </section>
             
             <section class="main-section">
-                <h2>CURSOS</h2>
+                <h2>Cursos y Certificaciones</h2>
                 <div class="timeline-item">
-                    <h3>Formación en prevención de riesgos laborales</h3>
-                    <p class="item-subtitle">Consejería de economía y empleo, Guadalajara | MARZO 2018 - MAYO 2018</p>
+                    <h3>Prevención de Riesgos Laborales</h3>
+                    <p class="item-subtitle">Consejería de economía y empleo, Guadalajara | 2018</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Formación de conductores de carretillas elevadoras</h3>
-                    <p class="item-subtitle">San Cristobal, Guadalajara | DICIEMBRE 2017</p>
+                    <h3>Conducción de Carretillas Elevadoras</h3>
+                    <p class="item-subtitle">San Cristobal, Guadalajara | 2017</p>
+                </div>
+                 <div class="timeline-item">
+                    <h3>Inglés Nivel B1</h3>
+                    <p class="item-subtitle">Certificación acreditada</p>
                 </div>
             </section>
         </main>
@@ -272,7 +306,23 @@
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('change', () => document.body.classList.toggle('light-mode'));
+        const body = document.body;
+        // Check local storage for theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener('change', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.replace('light-mode', 'dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.replace('dark-mode', 'light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
     </script>
 </body>
 </html>
